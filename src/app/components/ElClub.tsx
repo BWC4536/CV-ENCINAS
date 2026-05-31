@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail, Heart, Shield, Target, Users } from 'lucide-react';
 import logo from '../../imports/image-768x768-removebg-preview.png';
-import facilityImg from '../../imports/image__4_.png';
+import facilityImg from '../../imports/image__3_.png';
 import teamGroupImg from '../../imports/image.png';
 
 const boardMembers = [
@@ -124,11 +124,10 @@ export function ElClub() {
             {boardMembers.map((member) => (
               <div
                 key={member.id}
-                className={`rounded-2xl overflow-hidden border transition-shadow hover:shadow-xl ${
-                  member.isPresident
+                className={`rounded-2xl overflow-hidden border transition-shadow hover:shadow-xl ${member.isPresident
                     ? 'border-red-200 shadow-md shadow-red-100'
                     : 'border-gray-100 shadow-sm'
-                }`}
+                  }`}
               >
                 <div
                   className={`h-2 ${member.isPresident ? 'bg-red-600' : 'bg-gray-200'}`}
@@ -136,11 +135,10 @@ export function ElClub() {
                 <div className="p-6 flex gap-5 items-start bg-white">
                   {/* Avatar */}
                   <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center shrink-0 font-black text-2xl ${
-                      member.isPresident
+                    className={`w-16 h-16 rounded-full flex items-center justify-center shrink-0 font-black text-2xl ${member.isPresident
                         ? 'bg-red-600 text-white'
                         : 'bg-black text-white'
-                    }`}
+                      }`}
                   >
                     {member.name.split(' ').find((n) => n.length > 1)?.charAt(0) ?? 'D'}
                   </div>
@@ -232,32 +230,19 @@ export function ElClub() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="relative rounded-2xl overflow-hidden h-56 bg-gray-800 border border-white/10 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
-                {/* Decorative grid for map feel */}
-                <div className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-                    backgroundSize: '30px 30px'
-                  }}
+              {/* Map Embed */}
+              <div className="relative rounded-2xl overflow-hidden h-56 bg-gray-800 border border-white/10">
+                <iframe
+                  src="https://maps.google.com/maps?q=Calle%20Ramón%20y%20Cajal%2037,%20Valencina%20de%20la%20Concepción&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mapa del Pabellón Municipal"
+                  className="absolute inset-0"
                 />
-                <div className="relative z-10 text-center">
-                  <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-red-600/50">
-                    <MapPin size={24} className="text-white" />
-                  </div>
-                  <p className="text-white font-bold text-sm">Valencina de la Concepción</p>
-                  <p className="text-gray-400 text-xs mt-1">C/ Ramón y Cajal 37 · Sevilla</p>
-                  <a
-                    href="https://maps.google.com/?q=Calle+Ramón+y+Cajal+37,+Valencina+de+la+Concepción"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:bg-yellow-400 transition-colors"
-                  >
-                    <MapPin size={12} />
-                    Ver en Google Maps
-                  </a>
-                </div>
               </div>
             </div>
           </div>
