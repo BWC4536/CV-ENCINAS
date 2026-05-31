@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { ClipboardList, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
+import { ClipboardList, CheckCircle, AlertCircle, ChevronDown, X } from 'lucide-react';
 
 type FormData = {
   nombre: string;
@@ -67,6 +67,7 @@ export function Inscripciones() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const {
     register,
@@ -311,7 +312,13 @@ export function Inscripciones() {
                   />
                   <span className="text-xs text-gray-600 leading-relaxed">
                     He leído y acepto la{' '}
-                    <span className="text-red-600 font-semibold underline cursor-pointer">Política de Privacidad</span>
+                    <button
+                      type="button"
+                      onClick={() => setShowPrivacyModal(true)}
+                      className="text-red-600 font-semibold underline cursor-pointer hover:text-red-700 bg-transparent border-0 p-0 align-baseline text-left inline"
+                    >
+                      Política de Privacidad
+                    </button>
                     {' '}y el tratamiento de mis datos personales por parte de Encinas Volley C.D. conforme al Reglamento General de Protección de Datos (RGPD). Los datos serán utilizados exclusivamente para gestionar la inscripción al club. <span className="text-red-600">*</span>
                   </span>
                 </label>
@@ -409,6 +416,100 @@ export function Inscripciones() {
           </div>
         </div>
       </div>
+
+      {/* Privacy Policy Modal */}
+      {showPrivacyModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300">
+          <div className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-gray-100 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <h3 className="text-black font-black text-lg uppercase tracking-wide">Política de Privacidad</h3>
+              <button
+                onClick={() => setShowPrivacyModal(false)}
+                className="text-gray-400 hover:text-black hover:bg-gray-100 p-1.5 rounded-lg transition-all"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6 text-gray-600 text-sm leading-relaxed">
+              <div>
+                <h4 className="text-black font-bold mb-2">1. Responsable del Tratamiento de Datos</h4>
+                <p>
+                  El responsable del tratamiento de los datos recabados a través de este formulario es <strong>Encinas Volley Club Deportivo</strong> (en adelante, "Encinas Volley C.D."), con domicilio social en Valencina de la Concepción, Sevilla, y dirección de correo electrónico de contacto: <a href="mailto:lasencinas.clubdeportivo@gmail.com" className="text-red-600 underline">lasencinas.clubdeportivo@gmail.com</a>.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-black font-bold mb-2">2. Finalidad del Tratamiento</h4>
+                <p>
+                  Los datos personales de los solicitantes (o de sus tutores legales en caso de menores de edad) serán tratados con las siguientes finalidades:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li>Gestionar la solicitud de inscripción del jugador/a en las categorías deportivas correspondientes del club.</li>
+                  <li>Coordinar la logística de los entrenamientos, partidos y competiciones federadas.</li>
+                  <li>Mantener la comunicación con los deportistas y sus familias sobre eventos, cuotas, horarios y noticias del club.</li>
+                  <li>Garantizar la seguridad e integridad de los deportistas durante la práctica deportiva (atendiendo a alergias o lesiones declaradas).</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-black font-bold mb-2">3. Legitimación del Tratamiento</h4>
+                <p>
+                  La base legal para el tratamiento de sus datos es el <strong>consentimiento explícito</strong> facilitado al marcar la casilla de aceptación obligatoria del formulario de inscripción. En el caso de menores de 14 años, este consentimiento deberá ser otorgado por sus padres o tutores legales.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-black font-bold mb-2">4. Destinatarios de los Datos</h4>
+                <p>
+                  Los datos recopilados son estrictamente para uso interno de Encinas Volley C.D. No se cederán datos a terceros salvo por las siguientes excepciones necesarias:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li><strong>Federación Andaluza de Voleibol (FAVB)</strong> u otros organismos deportivos oficiales únicamente para la tramitación de licencias y seguros deportivos obligatorios.</li>
+                  <li>Entidades médicas o aseguradoras en caso de accidente durante la actividad deportiva.</li>
+                  <li>Obligación legal ante autoridades competentes.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-black font-bold mb-2">5. Conservación de los Datos</h4>
+                <p>
+                  Los datos personales se conservarán durante el tiempo necesario para cumplir con la finalidad de la inscripción (normalmente la temporada deportiva en curso) o mientras persista el interés legítimo del deportista en formar parte del club, y en todo caso durante los plazos previstos por la ley aplicable para atender posibles responsabilidades.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-black font-bold mb-2">6. Derechos del Usuario</h4>
+                <p>
+                  De acuerdo con el Reglamento General de Protección de Datos (RGPD) y la LOPDGDD, usted tiene derecho a:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li><strong>Acceder</strong> a sus datos personales almacenados en nuestros ficheros.</li>
+                  <li>Solicitar la <strong>rectificación</strong> de datos inexactos o incompletos.</li>
+                  <li>Solicitar la <strong>supresión</strong> de sus datos cuando ya no sean necesarios para los fines que fueron recogidos.</li>
+                  <li>Solicitar la <strong>limitación del tratamiento</strong> o la <strong>oposición</strong> al mismo.</li>
+                  <li>Ejercer la portabilidad de sus datos.</li>
+                </ul>
+                <p className="mt-3">
+                  Para ejercer estos derechos, puede enviar una solicitud por escrito acompañada de una copia de su documento de identidad a la dirección de correo electrónico: <a href="mailto:lasencinas.clubdeportivo@gmail.com" className="text-red-600 underline">lasencinas.clubdeportivo@gmail.com</a>.
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+              <button
+                onClick={() => setShowPrivacyModal(false)}
+                className="bg-black hover:bg-gray-800 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg transition-all"
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
