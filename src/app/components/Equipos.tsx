@@ -1,10 +1,5 @@
 import { useState } from 'react';
 import { Users, Search } from 'lucide-react';
-import teamPhoto from '../../imports/image.png';
-import teamPhoto2 from '../../imports/image-1.png';
-import teamPhoto3 from '../../imports/image__3_.png';
-import teamPhoto4 from '../../imports/image__4_.png';
-
 type Player = {
   id: number;
   number: number;
@@ -15,21 +10,21 @@ type Player = {
 };
 
 const players: Player[] = [
-  { id: 1, number: 1, name: 'Alejandro García', position: 'Colocador', category: 'Senior Masculino', image: teamPhoto },
-  { id: 2, number: 4, name: 'Martín Rodríguez', position: 'Opuesto', category: 'Senior Masculino', image: teamPhoto2 },
-  { id: 3, number: 7, name: 'David Torres', position: 'Central', category: 'Senior Masculino', image: teamPhoto3 },
+  { id: 1, number: 1, name: 'Alejandro García', position: 'Colocador', category: 'Senior Masculino' },
+  { id: 2, number: 4, name: 'Martín Rodríguez', position: 'Opuesto', category: 'Senior Masculino' },
+  { id: 3, number: 7, name: 'David Torres', position: 'Central', category: 'Senior Masculino' },
   { id: 4, number: 9, name: 'Pablo Moreno', position: 'Receptor', category: 'Senior Masculino' },
   { id: 5, number: 11, name: 'Sergio López', position: 'Líbero', category: 'Senior Masculino' },
-  { id: 6, number: 14, name: 'Carlos Jiménez', position: 'Central', category: 'Senior Masculino', image: teamPhoto4 },
+  { id: 6, number: 14, name: 'Carlos Jiménez', position: 'Central', category: 'Senior Masculino' },
   { id: 7, number: 2, name: 'Ana Martínez', position: 'Colocadora', category: 'Senior Femenino' },
-  { id: 8, number: 5, name: 'Laura Sánchez', position: 'Opuesta', category: 'Senior Femenino', image: teamPhoto2 },
+  { id: 8, number: 5, name: 'Laura Sánchez', position: 'Opuesta', category: 'Senior Femenino' },
   { id: 9, number: 8, name: 'Sofía Hernández', position: 'Central', category: 'Senior Femenino' },
-  { id: 10, number: 10, name: 'Elena Gómez', position: 'Receptora', category: 'Senior Femenino', image: teamPhoto3 },
+  { id: 10, number: 10, name: 'Elena Gómez', position: 'Receptora', category: 'Senior Femenino' },
   { id: 11, number: 12, name: 'Lucía Díaz', position: 'Líbero', category: 'Senior Femenino' },
   { id: 12, number: 15, name: 'Natalia Pérez', position: 'Central', category: 'Senior Femenino' },
-  { id: 13, number: 3, name: 'Javier Ruiz', position: 'Colocador', category: 'Junior Masculino', image: teamPhoto },
+  { id: 13, number: 3, name: 'Javier Ruiz', position: 'Colocador', category: 'Junior Masculino' },
   { id: 14, number: 6, name: 'Adrián Castro', position: 'Receptor', category: 'Junior Masculino' },
-  { id: 15, number: 16, name: 'Carmen Flores', position: 'Opuesta', category: 'Junior Femenino', image: teamPhoto4 },
+  { id: 15, number: 16, name: 'Carmen Flores', position: 'Opuesta', category: 'Junior Femenino' },
   { id: 16, number: 18, name: 'Marta Vega', position: 'Colocadora', category: 'Junior Femenino' },
 ];
 
@@ -85,11 +80,10 @@ export function Equipos() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`shrink-0 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full transition-all duration-200 ${
-                  activeCategory === cat
+                className={`shrink-0 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full transition-all duration-200 ${activeCategory === cat
                     ? 'bg-red-600 text-white shadow-md shadow-red-200'
                     : 'bg-white text-gray-600 border border-gray-200 hover:border-red-300 hover:text-red-600'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -153,9 +147,8 @@ export function Equipos() {
                 <div className="p-4">
                   <h3 className="text-black font-black text-sm leading-tight mb-2">{player.name}</h3>
                   <span
-                    className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full ${
-                      positionColors[player.position] ?? 'bg-gray-100 text-gray-600'
-                    }`}
+                    className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full ${positionColors[player.position] ?? 'bg-gray-100 text-gray-600'
+                      }`}
                   >
                     {player.position}
                   </span>
