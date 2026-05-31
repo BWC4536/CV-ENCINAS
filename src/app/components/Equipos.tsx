@@ -28,6 +28,7 @@ const players: Player[] = [
   { id: 16, number: 18, name: 'Marta Vega', position: 'Colocadora', category: 'Junior Femenino' },
 ];
 
+
 const categories = ['Todos', 'Senior Masculino', 'Senior Femenino', 'Junior Masculino', 'Junior Femenino'];
 
 const positionColors: Record<string, string> = {
@@ -81,8 +82,8 @@ export function Equipos() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`shrink-0 text-xs font-bold uppercase tracking-wide px-4 py-2 rounded-full transition-all duration-200 ${activeCategory === cat
-                    ? 'bg-red-600 text-white shadow-md shadow-red-200'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-red-300 hover:text-red-600'
+                  ? 'bg-red-600 text-white shadow-md shadow-red-200'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-red-300 hover:text-red-600'
                   }`}
               >
                 {cat}
