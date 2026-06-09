@@ -232,30 +232,27 @@ export function ElClub() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="relative rounded-2xl overflow-hidden h-56 bg-gray-800 border border-white/10 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
-                {/* Decorative grid for map feel */}
-                <div className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-                    backgroundSize: '30px 30px'
-                  }}
-                />
-                <div className="relative z-10 text-center">
-                  <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-red-600/50">
-                    <MapPin size={24} className="text-white" />
-                  </div>
-                  <p className="text-white font-bold text-sm">Valencina de la Concepción</p>
-                  <p className="text-gray-400 text-xs mt-1">C/ Ramón y Cajal 37 · Sevilla</p>
+              {/* Map */}
+              <div className="relative rounded-2xl overflow-hidden h-56 bg-gray-800 border border-white/10 group">
+                <iframe
+                  src="https://maps.google.com/maps?q=Pabell%C3%B3n%20Hernandez%20Albarracin&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mapa de ubicación"
+                ></iframe>
+                <div className="absolute bottom-4 left-4 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                   <a
-                    href="https://maps.google.com/?q=Calle+Ramón+y+Cajal+37,+Valencina+de+la+Concepción"
+                    href="https://maps.app.goo.gl/KwCVCKTzdQTKHGnz5"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:bg-yellow-400 transition-colors"
+                    className="inline-flex items-center gap-1.5 bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg pointer-events-auto hover:bg-red-700 transition-colors"
                   >
                     <MapPin size={12} />
-                    Ver en Google Maps
+                    Abrir en Google Maps
                   </a>
                 </div>
               </div>
