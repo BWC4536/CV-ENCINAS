@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npx vite build",
+  "buildCommand": "npm install && ./node_modules/.bin/vite build",
   "rewrites": [
     {
       "source": "/(.*)",
